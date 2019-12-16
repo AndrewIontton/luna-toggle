@@ -19,7 +19,7 @@
     "modal",
     "tabs"
   ],
-  "author": "93digital",
+  "author": "Andrew Iontton",
   "license": "ISC",
   "devDependencies": {
     "custom-event-polyfill": "^1.0.7",
