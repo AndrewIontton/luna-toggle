@@ -16,8 +16,19 @@ There is also a `data-toggle-close` attribute which once clicked will remove the
 </div>
 ```
 
-## Initialise the toggle class.
+## Include Toggle
 
+1. Firstly install the Luna toggle package via npm.
+```bash
+npm install luna-toggle
+```
+
+2. Import the toggle class.
+```js
+import Toggle from 'luna-toggle';
+```
+
+3. Initialise the toggle class.
 ```js
 // Initialize all our toggle elements by data attribute.
 window.toggleElems = {};
