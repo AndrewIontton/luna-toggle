@@ -31,6 +31,7 @@ elements.forEach(element => {
 You can pass an additional argument in the Toggle class which will handle the aria attributes to help with accessibility. These currently are `accordion`, `modal` & `tab`.
 
 ```js
+window.toggleElems = {};
 const elements = document.querySelectorAll('.tabs');
 
 elements.forEach(element => {
