@@ -7,6 +7,10 @@
     "dev": "parcel luna-toggle.js",
     "build": "parcel build luna-toggle.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndrewIontton/luna-toggle"
+  },
   "keywords": [
     "Luna",
     "93digital",
