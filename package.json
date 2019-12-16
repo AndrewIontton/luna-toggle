@@ -1,0 +1,24 @@
+{
+  "name": "luna-toggle",
+  "version": "1.0.1",
+  "description": "Toggle function for 93digital's Luna starter theme",
+  "main": "luna-toggle.js",
+  "scripts": {
+    "dev": "parcel luna-toggle.js",
+    "build": "parcel build luna-toggle.js"
+  },
+  "keywords": [
+    "Luna",
+    "93digital",
+    "toggle",
+    "accordion",
+    "modal",
+    "tabs"
+  ],
+  "author": "93digital",
+  "license": "ISC",
+  "devDependencies": {
+    "custom-event-polyfill": "^1.0.7",
+    "parcel-bundler": "^1.12.4"
+  }
+}
