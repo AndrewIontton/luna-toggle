@@ -22,7 +22,9 @@
   "author": "Andrew Iontton",
   "license": "ISC",
   "devDependencies": {
-    "custom-event-polyfill": "^1.0.7",
     "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "custom-event-polyfill": "^1.0.7"
   }
 }
