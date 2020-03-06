@@ -1,22 +1,19 @@
 import 'custom-event-polyfill';
 
-export default class Toggle {
-  constructor(element, type = 'modal') {
-    this.type = type;
-    this.contentType = 'aria-hidden';
-    this.buttonType = this.type === 'tab' ? this.buttonType = 'aria-selected' : this.buttonType = 'aria-expanded';
-    this.modal = element;
+export default class LunaToggle {
+  constructor(element) {
+    this.toggleElement = element;
     this.state = false;
-    this.selector = this.modal.getAttribute('data-toggle-target');
-    this.class = `is-active-${this.selector}`;
-    this.buttons = document.querySelectorAll(`[data-toggle="${this.selector}"]`);
-    this.closeButtons = document.querySelectorAll(`[data-toggle-close="${this.selector}"]`);
+    this.selector = this.toggleElement.getAttribute('data-luna-toggle-target');
+    this.bodyClass = `is-active-${this.selector}`;
+    this.toggleButtons = document.querySelectorAll(`[data-luna-toggle="${this.selector}"]`);
+    this.closeButtons = document.querySelectorAll(`[data-luna-toggle-close="${this.selector}"]`);
     this.init();
   }
   init() {
-    this.modal.setAttribute(this.contentType, !this.state);
-    this.buttons.forEach(button => {
-      button.setAttribute(this.buttonType, this.state);
+    this.toggleElement.setAttribute('aria-hidden', !this.state);
+    this.toggleButtons.forEach(button => {
+      button.setAttribute('aria-selected', this.state);
       button.addEventListener('click', () => this.toggle());
     });
     this.closeButtons.forEach(closeButton => {
@@ -25,24 +22,26 @@ export default class Toggle {
   }
   close() {
     this.state = false;
-    this.buttons.forEach(button => {
+    this.toggleButtons.forEach(button => {
       button.classList.remove('is-active');
-      button.setAttribute(this.buttonType, false);
+      button.setAttribute('aria-selected', false);
     });
-    document.body.classList.remove(this.class);
-    this.modal.classList.remove('is-active');
-    this.modal.setAttribute(this.contentType, true);
+    document.body.classList.remove(this.bodyClass);
+    this.toggleElement.classList.remove('is-active');
+    this.toggleElement.setAttribute('aria-hidden', true);
     this.triggerEvent('close');
   }
   toggle() {
     this.state = !this.state;
-    this.buttons.forEach(button => {
+
+    this.toggleButtons.forEach(button => {
       button.classList[this.state ? 'add' : 'remove']('is-active');
-      button.setAttribute(this.buttonType, this.state);
+      button.setAttribute('aria-selected', this.state);
     });
-    document.body.classList[this.state ? 'add' : 'remove'](this.class);
-    this.modal.classList[this.state ? 'add' : 'remove']('is-active');
-    this.modal.setAttribute(this.contentType, !this.state);
+
+    document.body.classList[this.state ? 'add' : 'remove'](this.bodyClass);
+    this.toggleElement.classList[this.state ? 'add' : 'remove']('is-active');
+    this.toggleElement.setAttribute('aria-hidden', !this.state);
     this.triggerEvent(this.state ? 'open' : 'close');
   }
   triggerEvent(eventName) {
@@ -52,6 +51,6 @@ export default class Toggle {
         toggleClass: this,
       },
     });
-    this.modal.dispatchEvent(customEvent);
+    this.toggleElement.dispatchEvent(customEvent);
   }
 }
