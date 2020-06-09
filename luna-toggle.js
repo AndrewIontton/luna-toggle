@@ -12,20 +12,24 @@ export default class LunaToggle {
   }
   init() {
     this.toggleElement.setAttribute('aria-hidden', !this.state);
-    this.toggleButtons.forEach(button => {
+
+    for (let index = 0; index < this.toggleButtons.length; index++) {
+      const button = this.toggleButtons[index];
       button.setAttribute('aria-selected', this.state);
       button.addEventListener('click', () => this.toggle());
-    });
-    this.closeButtons.forEach(closeButton => {
+    }
+    for (let index = 0; index < this.closeButtons.length; index++) {
+      const closeButton = this.closeButtons[index];
       closeButton.addEventListener('click', () => this.close());
-    });
+    }
   }
   close() {
     this.state = false;
-    this.toggleButtons.forEach(button => {
+    for (let index = 0; index < this.toggleButtons.length; index++) {
+      const button = this.toggleButtons[index];
       button.classList.remove('is-active');
       button.setAttribute('aria-selected', false);
-    });
+    }
     document.body.classList.remove(this.bodyClass);
     this.toggleElement.classList.remove('is-active');
     this.toggleElement.setAttribute('aria-hidden', true);
@@ -34,10 +38,11 @@ export default class LunaToggle {
   toggle() {
     this.state = !this.state;
 
-    this.toggleButtons.forEach(button => {
+    for (let index = 0; index < this.toggleButtons.length; index++) {
+      const button = this.toggleButtons[index];
       button.classList[this.state ? 'add' : 'remove']('is-active');
       button.setAttribute('aria-selected', this.state);
-    });
+    }
 
     document.body.classList[this.state ? 'add' : 'remove'](this.bodyClass);
     this.toggleElement.classList[this.state ? 'add' : 'remove']('is-active');

@@ -1,6 +1,6 @@
 {
   "name": "luna-toggle",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Toggle function for 93digital's Luna starter theme",
   "main": "luna-toggle.js",
   "scripts": {
